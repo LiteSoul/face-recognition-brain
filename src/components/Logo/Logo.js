@@ -11,8 +11,8 @@ const Logo = () => {
 				options={{ max: 30 }}
 				style={{ height: 150, width: 150 }}
 			>
-				<div className="Tilt-inner">
-					<img src="{brlogo}" alt="" />
+				<div className="Tilt-inner pa3">
+					<img style={{ paddingTop: '5px' }} src="{brlogo}" alt="brlogo" />
 				</div>
 			</Tilt>
 		</div>
