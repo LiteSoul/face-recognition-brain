@@ -1,6 +1,6 @@
 import React from 'react'
 import Tilt from 'react-tilt'
-import brlogo from './brlogo.png'
+import brain from './brain.png'
 import './logo.css'
 
 const Logo = () => {
@@ -12,7 +12,7 @@ const Logo = () => {
 				style={{ height: 150, width: 150 }}
 			>
 				<div className="Tilt-inner pa3">
-					<img style={{ paddingTop: '5px' }} src="{brlogo}" alt="brlogo" />
+					<img style={{ paddingTop: '5px' }} src={brain} alt="brlogo" />
 				</div>
 			</Tilt>
 		</div>
