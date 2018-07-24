@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation'
 import Logo from './components/Logo/Logo'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
+import Particles from 'react-particles-js'
 import './App.css'
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
 				<Logo />
 				<Rank />
 				<ImageLinkForm />
-        {/*<FaceRecognition /> */}
+				<Particles className="particles" />
+				{/*<FaceRecognition /> */}
 			</div>
 		)
 	}
