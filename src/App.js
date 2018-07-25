@@ -17,7 +17,8 @@ class App extends Component {
 		super()
 		this.state = {
 			input: '',
-			imageUrl: ''
+			imageUrl: '',
+			box: {}
 		}
 	}
 
@@ -25,21 +26,34 @@ class App extends Component {
 		this.setState({ input: event.target.value })
 	}
 
+	calculateFaceLocation = data => {
+		const faceBox = data.outputs[0].data.regions[0].region_info.bounding_box
+		const image = document.getElementById('inputImage')
+		const width = Number(image.width)
+		const height = Number(image.height)
+		console.log(faceBox)
+		console.log(width, height)
+		return {
+			leftCol: faceBox.left_col * width,
+			rightCol: width - faceBox.right_col * width,
+			topRow: faceBox.top_row * height,
+			bottomRow: height - faceBox.bottom_row * height
+		}
+	}
+
+	displayFaceBox = box => {
+		console.log(box)
+		this.setState({ box: box })
+	}
+
 	onButtonClick = () => {
 		this.setState({ imageUrl: this.state.input })
 		app.models
 			.predict('e466caa0619f444ab97497640cefc4dc', this.state.input)
-			.then(
-				function(response) {
-					// do something with response
-					console.log(
-						response.outputs[0].data.regions[0].region_info.bounding_box
-					)
-				},
-				function(err) {
-					// there was an error
-				}
+			.then(response =>
+				this.displayFaceBox(this.calculateFaceLocation(response))
 			)
+			.catch(err => console.log(err))
 	}
 
 	render() {
@@ -53,7 +67,7 @@ class App extends Component {
 					onButtonClick={this.onButtonClick}
 				/>
 				{/* <Particles className="particles" /> */}
-				<FaceRecognition imageUrl={this.state.imageUrl} />
+				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
 			</div>
 		)
 	}
