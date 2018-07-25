@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation'
 import Logo from './components/Logo/Logo'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
+import CelebrityResults from './components/CelebrityResults/CelebrityResults'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
 // import Particles from 'react-particles-js'
 import './App.css'
@@ -28,12 +29,20 @@ class App extends Component {
 
 	calculateFaceLocation = data => {
 		const faceBox = data.outputs[0].data.regions[0].region_info.bounding_box
+		const name1 =
+			data.outputs[0].data.regions[0].data.face.identity.concepts[0].name
+		const name2 =
+			data.outputs[0].data.regions[0].data.face.identity.concepts[1].name
 		const image = document.getElementById('inputImage')
 		const width = Number(image.width)
 		const height = Number(image.height)
-		console.log(faceBox)
-		console.log(width, height)
+		console.log('Mmm...looks like ')
+		console.log(name1)
+		console.log('with a bit of ')
+		console.log(name2)
 		return {
+			name1: name1,
+			name2: name2,
 			leftCol: faceBox.left_col * width,
 			rightCol: width - faceBox.right_col * width,
 			topRow: faceBox.top_row * height,
@@ -67,6 +76,7 @@ class App extends Component {
 					onButtonClick={this.onButtonClick}
 				/>
 				{/* <Particles className="particles" /> */}
+				<CelebrityResults box={this.state.box} />
 				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
 			</div>
 		)
