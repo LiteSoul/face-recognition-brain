@@ -54,6 +54,7 @@ class App extends Component {
 				/>
 				<Particles className="particles" />
 				<FaceRecognition imageUrl={this.state.imageUrl} />
+				<div>HI FROM APP</div>
 			</div>
 		)
 	}
