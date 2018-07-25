@@ -4,7 +4,7 @@ import Logo from './components/Logo/Logo'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
-import Particles from 'react-particles-js'
+// import Particles from 'react-particles-js'
 import './App.css'
 import Clarifai from 'clarifai'
 //-----Clarifai celebrity------
@@ -52,9 +52,8 @@ class App extends Component {
 					onInputChange={this.onInputChange}
 					onButtonClick={this.onButtonClick}
 				/>
-				<Particles className="particles" />
+				{/* <Particles className="particles" /> */}
 				<FaceRecognition imageUrl={this.state.imageUrl} />
-				<div>HI FROM APP</div>
 			</div>
 		)
 	}
