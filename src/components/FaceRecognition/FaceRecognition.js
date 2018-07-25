@@ -2,10 +2,11 @@ import React from 'react'
 
 const FaceRecognition = ({ imageUrl }) => {
 	return (
-		<div className="center ma">
+		<div className="center" style={{ maxWidth: '800px' }}>
 			<img
 				className="absolute"
-				style={{ width: '90%' }}
+				// className="ma"
+				style={{ maxWidth: '100%', height: 'auto' }}
 				src={imageUrl}
 				alt=""
 			/>
