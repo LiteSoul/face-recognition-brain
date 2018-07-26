@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Navigation from './components/Navigation/Navigation'
-import Logo from './components/Logo/Logo'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import CelebrityResults from './components/CelebrityResults/CelebrityResults'
@@ -36,8 +35,8 @@ class App extends Component {
 		const image = document.getElementById('inputImage')
 		const width = Number(image.width)
 		const height = Number(image.height)
-		console.log('Mmm...looks like ')
-		console.log(name1)
+		console.log('width ' + width)
+		console.log('height' + height)
 		console.log('with a bit of ')
 		console.log(name2)
 		return {
@@ -69,7 +68,6 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Navigation />
-				<Logo />
 				<Rank />
 				<ImageLinkForm
 					onInputChange={this.onInputChange}
@@ -80,7 +78,7 @@ class App extends Component {
 				{/* {this.state.box.name1 ? (
 					<CelebrityResults box={this.state.box} />
 				) : null} */}
-				{/* <CelebrityResults box={this.state.box} /> */}
+				<CelebrityResults box={this.state.box} />
 				{/* {this.state.box.name1 ? (
 					<FaceRecognition
 						box={this.state.box}

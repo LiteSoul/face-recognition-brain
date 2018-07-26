@@ -1,0 +1,27 @@
+.nav {
+	display: flex;
+	flex-direction: row;
+	/* aligns links vertically: */
+	align-items: center;
+	/* position: fixed; */
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 160px;
+	/* background-color: rgba(0, 0, 0, 1); */
+	/* justify-content: flex-end; */
+}
+
+.logo {
+	justify-content: flex-start;
+	/* this is the important bit: */
+	/* flex-grow: 1; */
+	/* flex: 10; */
+	/* margin-right: auto; */
+}
+
+.rightnav {
+	justify-content: flex-end;
+	flex-direction: row-reverse;
+}
