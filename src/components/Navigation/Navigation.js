@@ -12,13 +12,7 @@ const Navigation = () => {
 			</nav>
 			<nav className="rightnav">
 				<div>
-					<a href="#">Home</a>
-				</div>
-				<div>
-					<a href="#">Contact</a>
-				</div>
-				<div>
-					<a href="#">Sign Out</a>
+					<a href="#signin">Sign Out</a>
 				</div>
 			</nav>
 		</header>

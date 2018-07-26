@@ -30,6 +30,7 @@ class App extends Component {
 		const faceBox = data.outputs[0].data.regions[0].region_info.bounding_box
 		const name1 =
 			data.outputs[0].data.regions[0].data.face.identity.concepts[0].name
+		// const name1plus = name1.replace('e', 'crazy')
 		const name2 =
 			data.outputs[0].data.regions[0].data.face.identity.concepts[1].name
 		const image = document.getElementById('inputImage')
@@ -38,9 +39,10 @@ class App extends Component {
 		console.log('width ' + width)
 		console.log('height' + height)
 		console.log('with a bit of ')
-		console.log(name2)
+		// console.log(name1plus)
 		return {
 			name1: name1,
+			// name1plus: name1plus,
 			name2: name2,
 			leftCol: faceBox.left_col * width,
 			rightCol: width - faceBox.right_col * width,
@@ -73,18 +75,7 @@ class App extends Component {
 					onInputChange={this.onInputChange}
 					onButtonClick={this.onButtonClick}
 				/>
-				{/* <Particles className="particles" /> */}
-				{/* {this.state.box.name1 ? <CelebrityResults box={this.state.box} /> : null} */}
-				{/* {this.state.box.name1 ? (
-					<CelebrityResults box={this.state.box} />
-				) : null} */}
 				<CelebrityResults box={this.state.box} />
-				{/* {this.state.box.name1 ? (
-					<FaceRecognition
-						box={this.state.box}
-						imageUrl={this.state.imageUrl}
-					/>
-				) : null} */}
 				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
 			</div>
 		)

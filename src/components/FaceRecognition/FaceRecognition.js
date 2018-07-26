@@ -1,20 +1,16 @@
 import React from 'react'
 import './FaceRecognition.css'
 
-const FaceRecognition = ({ imageUrl, box }) => {
+const FaceRecognition = ({ box, imageUrl }) => {
 	return (
 		<div className="center ma">
-			<div className="absolute">
-				{/* <div className={box.name1 ? 'white f3 showIt' : 'white f3 hideIt'}>
-					Mmmm... Looks a lot like {box.name1} with a bit of {box.name2}!
-				</div> */}
+			<div className="absolute mt3 mb3">
 				<img
+					className={box.name2 ? 'showIt' : 'hideIt'}
 					id="inputImage"
 					style={{ width: '600px' }}
-					className="mt3 mb3"
 					src={imageUrl}
 					alt=""
-					className={box.name2 ? 'showIt' : 'hideIt'}
 				/>
 				<div
 					className="face-box"
