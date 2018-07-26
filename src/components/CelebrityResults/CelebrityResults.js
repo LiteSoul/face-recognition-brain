@@ -10,7 +10,11 @@ function gooSearch(string) {
 const CelebrityResults = ({ box }) => {
 	return (
 		<div>
-			<div className={box.name1 ? 'white f3 showIt' : 'white f3 hideIt'}>
+			<div
+				className={
+					box.name1 ? 'white f3 mt3 mb3 showIt' : 'white f3 mt3 mb3 hideIt'
+				}
+			>
 				Mmmm... Looks a lot like
 				<a
 					href={box.name1 ? gooSearch(box.name1) : 'loading...'}
