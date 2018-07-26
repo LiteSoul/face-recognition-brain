@@ -76,7 +76,17 @@ class App extends Component {
 					onButtonClick={this.onButtonClick}
 				/>
 				{/* <Particles className="particles" /> */}
-				<CelebrityResults box={this.state.box} />
+				{/* {this.state.box.name1 ? <CelebrityResults box={this.state.box} /> : null} */}
+				{/* {this.state.box.name1 ? (
+					<CelebrityResults box={this.state.box} />
+				) : null} */}
+				{/* <CelebrityResults box={this.state.box} /> */}
+				{/* {this.state.box.name1 ? (
+					<FaceRecognition
+						box={this.state.box}
+						imageUrl={this.state.imageUrl}
+					/>
+				) : null} */}
 				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
 			</div>
 		)
