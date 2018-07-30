@@ -21,7 +21,8 @@ class App extends Component {
 			input: '',
 			imageUrl: '',
 			box: {},
-			route: 'home'
+			route: 'home',
+			isSignedIn: false
 		}
 	}
 
@@ -79,6 +80,7 @@ class App extends Component {
 				<Navigation
 					onRouteChange={this.onRouteChange}
 					route={this.state.route}
+					isSignedIn={this.state.isSignedIn}
 				/>
 				{this.state.route === 'home' || this.state.route === 'signed' ? (
 					<div>

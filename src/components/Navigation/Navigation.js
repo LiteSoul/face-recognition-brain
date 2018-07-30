@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '../Logo/Logo'
 import './Navigation.css'
 
-const Navigation = ({ onRouteChange, route }) => {
+const Navigation = ({ onRouteChange, isSignedIn }) => {
 	return (
 		<header className="nav">
 			<nav className="logo">
@@ -11,8 +11,12 @@ const Navigation = ({ onRouteChange, route }) => {
 				</div>
 			</nav>
 			<nav className="rightnav pointer">
-				{route === 'signed' ? (
-					<div onClick={() => onRouteChange('home')}>
+				{isSignedIn ? (
+					<div
+						onClick={() => {
+							onRouteChange('guest')
+						}}
+					>
 						<p>Sign Out</p>
 					</div>
 				) : (
