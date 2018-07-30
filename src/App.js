@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navigation from './components/Navigation/Navigation'
+import SignIn from './components/SignIn/SignIn'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import CelebrityResults from './components/CelebrityResults/CelebrityResults'
@@ -18,7 +19,8 @@ class App extends Component {
 		this.state = {
 			input: '',
 			imageUrl: '',
-			box: {}
+			box: {},
+			route: 'signin'
 		}
 	}
 
@@ -70,13 +72,19 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Navigation />
-				<Rank />
-				<ImageLinkForm
-					onInputChange={this.onInputChange}
-					onButtonClick={this.onButtonClick}
-				/>
-				<CelebrityResults box={this.state.box} />
-				<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+				{
+					this.state.route === 'signin'
+					? <SignIn />
+					: <div>
+							<Rank />
+							<ImageLinkForm
+								onInputChange={this.onInputChange}
+								onButtonClick={this.onButtonClick}
+							/>
+							<CelebrityResults box={this.state.box} />
+							<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+						</div>
+				}
 			</div>
 		)
 	}
