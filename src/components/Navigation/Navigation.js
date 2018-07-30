@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from '../Logo/Logo'
 import './Navigation.css'
 
-const Navigation = () => {
+const Navigation = ({ onRouteChange, route }) => {
 	return (
 		<header className="nav">
 			<nav className="logo">
@@ -10,10 +10,16 @@ const Navigation = () => {
 					<Logo />
 				</div>
 			</nav>
-			<nav className="rightnav">
-				<div>
-					<a href="#signin">Sign Out</a>
-				</div>
+			<nav className="rightnav pointer">
+				{route === 'signed' ? (
+					<div onClick={() => onRouteChange('home')}>
+						<p>Sign Out</p>
+					</div>
+				) : (
+					<div onClick={() => onRouteChange('signin')}>
+						<p>Sign In</p>
+					</div>
+				)}
 			</nav>
 		</header>
 	)

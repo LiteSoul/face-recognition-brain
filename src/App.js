@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navigation from './components/Navigation/Navigation'
 import SignIn from './components/SignIn/SignIn'
+import Register from './components/Register/Register'
 import Rank from './components/Rank/Rank'
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import CelebrityResults from './components/CelebrityResults/CelebrityResults'
@@ -20,7 +21,7 @@ class App extends Component {
 			input: '',
 			imageUrl: '',
 			box: {},
-			route: 'signin'
+			route: 'home'
 		}
 	}
 
@@ -68,23 +69,35 @@ class App extends Component {
 			.catch(err => console.log(err))
 	}
 
+	onRouteChange = route => {
+		this.setState({ route: route })
+	}
+
 	render() {
 		return (
 			<div className="App">
-				<Navigation />
-				{
-					this.state.route === 'signin'
-					? <SignIn />
-					: <div>
-							<Rank />
-							<ImageLinkForm
-								onInputChange={this.onInputChange}
-								onButtonClick={this.onButtonClick}
-							/>
-							<CelebrityResults box={this.state.box} />
-							<FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
-						</div>
-				}
+				<Navigation
+					onRouteChange={this.onRouteChange}
+					route={this.state.route}
+				/>
+				{this.state.route === 'home' || this.state.route === 'signed' ? (
+					<div>
+						<Rank />
+						<ImageLinkForm
+							onInputChange={this.onInputChange}
+							onButtonClick={this.onButtonClick}
+						/>
+						<CelebrityResults box={this.state.box} />
+						<FaceRecognition
+							box={this.state.box}
+							imageUrl={this.state.imageUrl}
+						/>
+					</div>
+				) : this.state.route === 'signin' ? (
+					<SignIn onRouteChange={this.onRouteChange} />
+				) : (
+					<Register onRouteChange={this.onRouteChange} />
+				)}
 			</div>
 		)
 	}
