@@ -71,6 +71,9 @@ class App extends Component {
 	}
 
 	onRouteChange = route => {
+		route === 'loggedin'
+			? this.setState({ isSignedIn: true })
+			: this.setState({ isSignedIn: false })
 		this.setState({ route: route })
 	}
 
@@ -79,10 +82,14 @@ class App extends Component {
 			<div className="App">
 				<Navigation
 					onRouteChange={this.onRouteChange}
-					route={this.state.route}
 					isSignedIn={this.state.isSignedIn}
 				/>
-				{this.state.route === 'home' || this.state.route === 'signed' ? (
+				{this.state.route === 'signin' ? (
+					<SignIn onRouteChange={this.onRouteChange} />
+				) : (
+				this.state.route === 'register' ? (
+					<Register onRouteChange={this.onRouteChange} />
+				): (
 					<div>
 						<Rank />
 						<ImageLinkForm
@@ -95,14 +102,12 @@ class App extends Component {
 							imageUrl={this.state.imageUrl}
 						/>
 					</div>
-				) : this.state.route === 'signin' ? (
-					<SignIn onRouteChange={this.onRouteChange} />
-				) : (
-					<Register onRouteChange={this.onRouteChange} />
-				)}
+				))}
+
+
 			</div>
 		)
-	}
+}
 }
 
 export default App

@@ -14,7 +14,7 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 				{isSignedIn ? (
 					<div
 						onClick={() => {
-							onRouteChange('guest')
+							onRouteChange('home')
 						}}
 					>
 						<p>Sign Out</p>
