@@ -17,11 +17,11 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 							onRouteChange('home')
 						}}
 					>
-						<p>Sign Out</p>
+						<p className="f3 link dim black underline pa3 pointer">Sign Out</p>
 					</div>
 				) : (
 					<div onClick={() => onRouteChange('signin')}>
-						<p>Sign In</p>
+						<p className="f3 link dim black underline pa3 pointer">Sign In</p>
 					</div>
 				)}
 			</nav>
