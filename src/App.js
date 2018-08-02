@@ -8,6 +8,7 @@ import CelebrityResults from './components/CelebrityResults/CelebrityResults'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
 // import Particles from 'react-particles-js'
 import './App.css'
+import GithubCorner from 'react-github-corner'
 import Clarifai from 'clarifai'
 //-----Clarifai celebrity------
 const app = new Clarifai.App({
@@ -100,6 +101,7 @@ class App extends Component {
 						<FaceRecognition box={box} imageUrl={imageUrl} />
 					</div>
 				)}
+				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
 			</div>
 		)
 	}
