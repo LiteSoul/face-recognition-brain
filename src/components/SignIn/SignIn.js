@@ -13,7 +13,20 @@ class SignIn extends Component {
 
 	onPasswordChange = e => this.setState({ signInPassword: e.target.value })
 
-	onSubmitSignIn = () => console.log(this.state)
+	onSubmitSignIn = () => {
+		fetch('http://localhost:3000/signin', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				email: this.state.signInEmail,
+				password: this.state.signInPassword
+			})
+		})
+			.then(response => response.json())
+			.then(data => {
+				if (data === 'success signing in') this.props.onRouteChange('loggedin')
+			})
+	}
 
 	render() {
 		const { onRouteChange } = this.props
@@ -28,6 +41,7 @@ class SignIn extends Component {
 									Email
 								</label>
 								<input
+									onBlur={this.onEmailChange}
 									className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 									type="email"
 									name="email-address"
@@ -39,6 +53,7 @@ class SignIn extends Component {
 									Password
 								</label>
 								<input
+									onBlur={this.onPasswordChange}
 									className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 									type="password"
 									name="password"
@@ -48,7 +63,7 @@ class SignIn extends Component {
 						</fieldset>
 						<div className="">
 							<input
-								onClick={() => onRouteChange('loggedin')}
+								onClick={this.onSubmitSignIn}
 								className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
 								type="submit"
 								value="Sign in"
