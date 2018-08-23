@@ -19,7 +19,7 @@ const ImageLinkForm = ({ onInputChange, onButtonClick }) => {
 					className="f4 w-30 grow link ph3 pv2 dib white bg-dark-green"
 					onClick={onButtonClick}
 				>
-					Det
+					Go
 				</button>
 			</div>
 		</div>
