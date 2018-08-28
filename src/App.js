@@ -86,7 +86,7 @@ class App extends Component {
 						.then(count => {
 							this.setState(
 								// a way to 'update' the entries only and leave the rest as is
-								Object.assign()
+								Object.assign(this.state.user,{entries:count})
 							)
 						})
 				}
