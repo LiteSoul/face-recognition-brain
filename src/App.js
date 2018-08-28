@@ -69,12 +69,30 @@ class App extends Component {
 		this.setState({ box: box })
 	}
 
-	onButtonClick = () => {
+	onPictureSubmit = () => {
 		this.setState({ imageUrl: this.state.input })
 		app.models
 			.predict('e466caa0619f444ab97497640cefc4dc', this.state.input)
-			.then(response =>
-				this.displayFaceBox(this.calculateFaceLocation(response))
+			.then(response => {
+				if (response) {
+					fetch('http://localhost:3000/image', {
+						method: 'put',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							id: this.state.user.id
+						})
+					})
+						.then(response => response.json())
+						.then(count => {
+							this.setState(
+								// a way to 'update' the entries only and leave the rest as is
+								Object.assign()
+							)
+						})
+				}
+				this.displayFaceBox(this.calculateFaceLocation(response)
+				)
+			}
 			)
 			.catch(err => console.log(err))
 	}
@@ -115,10 +133,9 @@ class App extends Component {
 					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : (
 							<div>
-								<Rank />
 								<ImageLinkForm
 									onInputChange={this.onInputChange}
-									onButtonClick={this.onButtonClick}
+									onPictureSubmit={this.onPictureSubmit}
 								/>
 								<CelebrityResults box={box} />
 								<FaceRecognition box={box} imageUrl={imageUrl} />
