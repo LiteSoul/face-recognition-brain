@@ -23,7 +23,15 @@ class App extends Component {
 			imageUrl: '',
 			box: {},
 			route: 'home',
-			isSignedIn: false
+			isSignedIn: false,
+			user: {
+				id: "",
+				name: "",
+				email: "",
+				password: "",
+				entries: 0,
+				joined: ''
+			}
 		}
 	}
 
@@ -78,6 +86,20 @@ class App extends Component {
 		this.setState({ route: route })
 	}
 
+	loadUser = data => {
+		this.setState({
+			user: {
+				id: data.id,
+				name: data.name,
+				email: data.email,
+				password: data.password,
+				entries: data.entries,
+				joined: data.joined
+			}
+		}
+		)
+	}
+
 	render() {
 		const { route, isSignedIn, box, imageUrl } = this.state
 		return (
@@ -89,18 +111,18 @@ class App extends Component {
 				{route === 'signin' ? (
 					<SignIn onRouteChange={this.onRouteChange} />
 				) : route === 'register' ? (
-					<Register onRouteChange={this.onRouteChange} />
+					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : (
-					<div>
-						<Rank />
-						<ImageLinkForm
-							onInputChange={this.onInputChange}
-							onButtonClick={this.onButtonClick}
-						/>
-						<CelebrityResults box={box} />
-						<FaceRecognition box={box} imageUrl={imageUrl} />
-					</div>
-				)}
+							<div>
+								<Rank />
+								<ImageLinkForm
+									onInputChange={this.onInputChange}
+									onButtonClick={this.onButtonClick}
+								/>
+								<CelebrityResults box={box} />
+								<FaceRecognition box={box} imageUrl={imageUrl} />
+							</div>
+						)}
 				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
 			</div>
 		)
