@@ -108,8 +108,9 @@ class App extends Component {
 					onRouteChange={this.onRouteChange}
 					isSignedIn={isSignedIn}
 				/>
+				<Rank name={this.state.user.name} entries={this.state.user.entries} />
 				{route === 'signin' ? (
-					<SignIn onRouteChange={this.onRouteChange} />
+					<SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : route === 'register' ? (
 					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : (
