@@ -15,14 +15,14 @@ const CelebrityResults = ({ box }) => {
 					box.name1 ? 'white f3 mt3 mb3 showIt' : 'white f3 mt3 mb3 hideIt'
 				}
 			>
-				Mmmm... Looks a lot like
+				Mmmm... Looks a lot like&nbsp;
 				<a
 					href={box.name1 ? gooSearch(box.name1) : 'loading...'}
 					target="_blank"
 				>
 					{box.name1}
 				</a>
-				with a bit of
+				&nbsp;with a bit of&nbsp;
 				<a
 					href={box.name2 ? gooSearch(box.name2) : 'loading...'}
 					target="_blank"

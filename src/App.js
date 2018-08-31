@@ -37,6 +37,7 @@ class App extends Component {
 
 	onInputChange = event => {
 		this.setState({ input: event.target.value })
+		if (event.key === 'Enter') { this.onPictureSubmit() }
 	}
 
 	calculateFaceLocation = data => {
@@ -86,7 +87,7 @@ class App extends Component {
 						.then(count => {
 							this.setState(
 								// a way to 'update' the entries only and leave the rest as is
-								Object.assign(this.state.user,{entries:count})
+								Object.assign(this.state.user, { entries: count })
 							)
 						})
 				}
@@ -126,7 +127,9 @@ class App extends Component {
 					onRouteChange={this.onRouteChange}
 					isSignedIn={isSignedIn}
 				/>
-				<Rank name={this.state.user.name} entries={this.state.user.entries} />
+				{this.state.user.name ? (
+					<Rank name={this.state.user.name} entries={this.state.user.entries} />
+				) : <div></div>}
 				{route === 'signin' ? (
 					<SignIn onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : route === 'register' ? (
