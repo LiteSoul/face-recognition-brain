@@ -43,13 +43,9 @@ class App extends Component {
 		// const name1plus = name1.replace('e', 'crazy')
 		const name2 =
 			data.outputs[0].data.regions[0].data.face.identity.concepts[1].name
-		console.log(data)
-		console.log(faceBox)
-		console.log(name1)
 		const image = document.getElementById('inputImage')
 		const width = Number(image.width)
 		const height = Number(image.height)
-		console.log(height + image)
 		return {
 			name1: name1,
 			name2: name2,
@@ -61,9 +57,7 @@ class App extends Component {
 	}
 
 	displayFaceBox = box => {
-		console.log(box)
 		this.setState({ box: box })
-		console.log(this.state.box)
 	}
 
 	onInputChange = event => {
@@ -73,17 +67,14 @@ class App extends Component {
 
 	uploadImage = event => {
 		const file = event.target.files[0]
-		console.log(file)
 		//this.sendToImgur(file)
 		//this.sendToClarifai(file)
 		let reader = new FileReader()
 		reader.readAsDataURL(file);
 		reader.onload = (event) => {
-			console.log(event.target.result)
 			const result = event.target.result
 			this.setState({ imageUrl: result })
 			const splitted = result.split('base64,')[1]
-			console.log(splitted)
 			const fileForClarifai = { base64: splitted }
 			this.sendToClarifai(fileForClarifai)
 		}
@@ -178,23 +169,22 @@ class App extends Component {
 				) : route === 'register' ? (
 					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : (
-							{/* <div>
+							<div>{/*
 								<ImageLinkForm
 									onInputChange={this.onInputChange}
 									sendToClarifai={this.sendToClarifai}
 								/> */}
-							< ImageUploadForm
+								<ImageUploadForm
 									uploadImage={this.uploadImage}
-				sendToImgur={this.sendToImgur}
-				grabImage={this.grabImage}
-				/>
+									sendToImgur={this.sendToImgur}
+									grabImage={this.grabImage}
+								/>
 								<CelebrityResults box={box} />
-				<FaceRecognition box={box} imageUrl={imageUrl} />
-			</div>
-		)
-	}
+								<FaceRecognition box={box} imageUrl={imageUrl} />
+							</div>
+						)}
 				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
-			</div >
+			</div>
 		)
 	}
 }

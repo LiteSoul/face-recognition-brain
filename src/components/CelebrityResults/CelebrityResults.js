@@ -12,7 +12,7 @@ const CelebrityResults = ({ box }) => {
 		<div>
 			<div
 				className={
-					box.name1 ? 'white f3 mt3 mb3 showIt' : 'white f3 mt3 mb3 hideIt'
+					box.name1 ? 'white f4 mt3 mb3 showIt' : 'white f4 mt3 mb3 hideIt'
 				}
 			>
 				Mmmm... Looks a lot like&nbsp;

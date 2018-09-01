@@ -1,4 +1,5 @@
 import React from 'react'
+import './ImageUploadForm.css'
 
 const ImageUploadForm = ({ uploadImage, grabImage }) => {
 	return (
@@ -13,12 +14,6 @@ const ImageUploadForm = ({ uploadImage, grabImage }) => {
 					accept="image/*"
 					onChange={uploadImage}
 				/>
-				<button
-					className="f4 w-30 grow link ph3 pv2 dib white bg-dark-green"
-					onClick={grabImage}
-				>
-					Go
-				</button>
 			</div>
 		</div>
 	)
