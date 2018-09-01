@@ -3,7 +3,7 @@ import Navigation from './components/Navigation/Navigation'
 import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
 import Rank from './components/Rank/Rank'
-import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
+// import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm'
 import ImageUploadForm from './components/ImageUploadForm/ImageUploadForm'
 import CelebrityResults from './components/CelebrityResults/CelebrityResults'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition'
@@ -178,22 +178,23 @@ class App extends Component {
 				) : route === 'register' ? (
 					<Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
 				) : (
-							<div>
+							{/* <div>
 								<ImageLinkForm
 									onInputChange={this.onInputChange}
 									sendToClarifai={this.sendToClarifai}
-								/>
-								<ImageUploadForm
+								/> */}
+							< ImageUploadForm
 									uploadImage={this.uploadImage}
-									sendToImgur={this.sendToImgur}
-									grabImage={this.grabImage}
-								/>
+				sendToImgur={this.sendToImgur}
+				grabImage={this.grabImage}
+				/>
 								<CelebrityResults box={box} />
-								<FaceRecognition box={box} imageUrl={imageUrl} />
-							</div>
-						)}
-				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
+				<FaceRecognition box={box} imageUrl={imageUrl} />
 			</div>
+		)
+	}
+				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
+			</div >
 		)
 	}
 }
