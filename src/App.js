@@ -10,7 +10,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition'
 // import Particles from 'react-particles-js'
 import './App.css'
 import GithubCorner from 'react-github-corner'
-import Footer from './components/Footer/Footer'
+import Wip from './components/Wip/Wip'
 import Clarifai from 'clarifai'
 //-----Clarifai celebrity------
 const app = new Clarifai.App({
@@ -175,6 +175,7 @@ class App extends Component {
 									onInputChange={this.onInputChange}
 									sendToClarifai={this.sendToClarifai}
 								/> */}
+								<Wip />
 								<ImageUploadForm
 									uploadImage={this.uploadImage}
 									sendToImgur={this.sendToImgur}
@@ -185,7 +186,6 @@ class App extends Component {
 							</div>
 						)}
 				<GithubCorner href="https://github.com/LiteSoul/face-recognition-brain" />
-				<Footer />
 			</div>
 		)
 	}
