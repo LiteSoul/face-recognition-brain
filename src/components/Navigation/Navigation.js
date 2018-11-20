@@ -10,20 +10,20 @@ const Navigation = ({ onRouteChange, isSignedIn }) => {
 					<Logo />
 				</div>
 			</nav>
-			<nav className="rightnav">
+			<nav className="rightnav cf fr">
 				{isSignedIn ? (
 					<div
 						className="cf fr pointer"
 						onClick={() => { onRouteChange('home') }}
 					>
-						<p className="f6 link dim ba ph3 pv2 mb2 dib white">Sign Out</p>
+						<p className="cf fr f6 link dim ba ph3 pv2 mb2 dib white">Sign Out</p>
 					</div>
 				) : (
 						<div
 							className="cf fr pointer"
 							onClick={() => onRouteChange('signin')}
 						>
-							<p className="f6 link dim ba ph3 pv2 mb2 dib white">Sign In</p>
+							<p className="cf fr f6 link dim ba ph3 pv2 mb2 dib white">Sign In</p>
 						</div>
 					)}
 			</nav>
