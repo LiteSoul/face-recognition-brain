@@ -4,7 +4,7 @@ import './Navigation.css'
 
 const Navigation = ({ onRouteChange, isSignedIn }) => {
 	return (
-		<header className="nav mw5 mw7-ns center">
+		<header className="nav mw6 mw8-ns center">
 			<nav className="logo">
 				<div>
 					<Logo />
